@@ -192,6 +192,20 @@
       "address": "kkkk",
       "CPF": "12312312387",
       "payment_method_id": 1
+    },
+    {
+      "id": 5,
+      "products": [
+        {
+          "id": 2,
+          "amount": 1,
+          "total_price": 10.0
+        }
+      ],
+      "user_id": "#userAuthRef",
+      "address": "rua x",
+      "CPF": "12312312387",
+      "payment_method_id": 2
     }
   ]
 }
