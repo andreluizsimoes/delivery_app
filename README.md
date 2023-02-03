@@ -1,3 +1,5 @@
-# delivery_app
+# Yoda Burger
 
-App criado na 9ª Dart Week da Academia do Flutter - 2023
+Delivery App created in the **9th Dart Week** of the [**Academia do Flutter**](https://instituto.academiadoflutter.com.br/)'!
+
+## Under development

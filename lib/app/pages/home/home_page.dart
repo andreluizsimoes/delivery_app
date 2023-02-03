@@ -6,6 +6,7 @@ import 'package:delivery_app/app/pages/home/widgets/delivery_product_tile.dart';
 import 'package:delivery_app/app/pages/home/widgets/shopping_bag_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -17,6 +18,7 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends BaseState<HomePage, HomeController> {
   @override
   void onReady() {
+    // SharedPreferences.getInstance().then((value) => value.clear());
     controller.loadProducts();
   }
 
@@ -41,7 +43,7 @@ class _HomePageState extends BaseState<HomePage, HomeController> {
         ),
         builder: (context, state) {
           return Column(
-            children: [              
+            children: [
               Expanded(
                 child: ListView.separated(
                   separatorBuilder: (context, index) => const Divider(

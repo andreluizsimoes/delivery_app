@@ -32,7 +32,7 @@ class OrderCompletedPage extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.all(20.0),
                   child: Text(
-                    'Pedido realizado com sucesso! R2-D2, C3-PO e BB-8 vão preparar o seu Burger e em breve Han Solo decolará com a Millennium Falcon para levar até você!',
+                    'Pedido realizado com sucesso! C3-PO vai preparar o seu Burger e em breve levaremos até você na Millennium Falcon!\nMay the Force be with you! ',
                     textAlign: TextAlign.center,
                     style: context.textStyles.textExtraBold
                         .copyWith(fontSize: 20, color: Colors.amber),

@@ -40,13 +40,6 @@ class OrderController extends Cubit<OrderState> {
     final order = [...state.orderProducts];
     final product = order[index];
     final amount = product.amount;
-    // if (amount == 1) {
-    //   // Exclusão do produto!
-    //   // order.remove(index);
-    // } else {
-    //   // sobrescreve o produto na lista, tirando 1 no amount
-    //   order[index] = product.copyWith(amount: product.amount - 1);
-    // }
 
     if (amount >= 1) {
       // sobrescreve o produto na lista, tirando 1 no amount
