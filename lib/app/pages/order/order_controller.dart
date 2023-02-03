@@ -93,6 +93,10 @@ class OrderController extends Cubit<OrderState> {
     for (var product in orderProducts) {
       if (product.amount == 0) {
         orderProducts.remove(product);
+        if (orderProducts.isEmpty) {
+          emit(state.copyWith(status: OrderStatus.emptyBag));
+          return;
+        }
       }
     }
   }

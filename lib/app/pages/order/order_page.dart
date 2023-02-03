@@ -3,7 +3,6 @@ import 'package:delivery_app/app/core/ui/base_state/base_state.dart';
 import 'package:delivery_app/app/core/ui/styles/text_styles.dart';
 import 'package:delivery_app/app/core/ui/widgets/delivery_appbar.dart';
 import 'package:delivery_app/app/core/ui/widgets/delivery_button.dart';
-import 'package:delivery_app/app/dto/order_dto.dart';
 import 'package:delivery_app/app/dto/order_product_dto.dart';
 import 'package:delivery_app/app/models/payment_type_model.dart';
 import 'package:delivery_app/app/pages/order/order_controller.dart';
@@ -61,7 +60,7 @@ class _OrderPageState extends BaseState<OrderPage, OrderController> {
           },
           emptyBag: () {
             showInfo(
-                'Não vá para outra galáxia!\nSacola vazia não para em pé!');
+                'Sacola sem itens!\nNão vá para outra galáxia de barriga vazia!');
             Navigator.pop(context, <OrderProductDto>[]);
           },
           success: () {
@@ -214,7 +213,8 @@ class _OrderPageState extends BaseState<OrderPage, OrderController> {
                     ],
                   ),
                 ),
-                BlocSelector<OrderController, OrderState, List<OrderProductDto>>(
+                BlocSelector<OrderController, OrderState,
+                    List<OrderProductDto>>(
                   selector: (state) => state.orderProducts,
                   builder: (context, orderProducts) {
                     return SliverFillRemaining(
@@ -238,7 +238,8 @@ class _OrderPageState extends BaseState<OrderPage, OrderController> {
                                     paymentTypeId != null;
                                 paymentTypeValid.value = paymentTypeSelected;
 
-                                // controller.clearZeroAmoutProducts(orderProducts);
+                                controller
+                                    .clearZeroAmoutProducts(orderProducts);
 
                                 if (valid && paymentTypeSelected) {
                                   controller.saveOrder(
