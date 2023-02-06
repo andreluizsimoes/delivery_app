@@ -238,10 +238,6 @@ class _OrderPageState extends BaseState<OrderPage, OrderController> {
                                     paymentTypeId != null;
                                 paymentTypeValid.value = paymentTypeSelected;
 
-                                // Caso usuário deixe item "vazio" no carrinho e clique em Finalizar.
-                                controller
-                                    .clearZeroAmoutProducts(orderProducts);
-
                                 if (valid && paymentTypeSelected) {
                                   controller.saveOrder(
                                     address: _enderecoEC.text,

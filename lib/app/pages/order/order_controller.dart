@@ -72,25 +72,27 @@ class OrderController extends Cubit<OrderState> {
   }) async {
     emit(state.copyWith(status: OrderStatus.loading));
 
-    await _orderRepository.saveOrder(OrderDto(
-      products: state.orderProducts,
-      address: address,
-      cpf: cpf,
-      paymentMethodId: paymentMethodId,
-    ));
-    emit(state.copyWith(status: OrderStatus.success));
-  }
+    bool orderOK = true;
 
-  Future<void> clearZeroAmoutProducts(
-      List<OrderProductDto> orderProducts) async {
-    for (var product in orderProducts) {
+    for (var product in state.orderProducts) {
       if (product.amount == 0) {
-        orderProducts.remove(product);
-        if (orderProducts.isEmpty) {
-          emit(state.copyWith(status: OrderStatus.emptyBag));
-          return;
-        }
+        orderOK = false;
       }
+    }
+
+    if (orderOK) {
+      await _orderRepository.saveOrder(OrderDto(
+        products: state.orderProducts,
+        address: address,
+        cpf: cpf,
+        paymentMethodId: paymentMethodId,
+      ));
+      emit(state.copyWith(status: OrderStatus.success));
+    } else {
+      emit(state.copyWith(
+          status: OrderStatus.error,
+          errorMessage:
+              'Foco Jedi!\nElimine do seu carrinho os itens que não deseja!'));
     }
   }
 }

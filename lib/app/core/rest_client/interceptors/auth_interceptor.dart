@@ -15,18 +15,18 @@ class AuthInterceptor extends Interceptor {
   @override
   Future<void> onRequest(
       RequestOptions options, RequestInterceptorHandler handler) async {
-    super.onRequest(options, handler);
+    // super.onRequest(options, handler);
     final sp = await SharedPreferences.getInstance();
     final accessToken = sp.getString('accessToken');
 
     options.headers['Authorization'] = 'Bearer $accessToken';
 
-    handler.next(options);
+    return handler.next(options);
   }
 
   @override
   Future<void> onError(DioError err, ErrorInterceptorHandler handler) async {
-    super.onError(err, handler);
+    // super.onError(err, handler);
     if (err.response?.statusCode == 401) {
       try {
         if (err.requestOptions.path != '/auth/refresh') {
@@ -39,7 +39,7 @@ class AuthInterceptor extends Interceptor {
         GlobalContext.i.loginExpire();
       }
     } else {
-      handler.next(err);
+      return handler.next(err);
     }
   }
 
