@@ -13,6 +13,11 @@ Login, Register and Order pages have required form fields validation, and extras
 
 Logo made by me at Photoshop with an image created at Midjourney IA.
 
+## Preview
+
+<div align="center">
+<img src="https://user-images.githubusercontent.com/18678939/217079619-7ac120bf-78cb-4263-8f59-c905770ed7ea.gif" width="300" >
+</div>
 
 ## Screens
 <table>
