@@ -18,6 +18,7 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends BaseState<HomePage, HomeController> {
   @override
   void onReady() {
+    // Clear de usuário para finalidade de testes!
     // SharedPreferences.getInstance().then((value) => value.clear());
     controller.loadProducts();
   }
